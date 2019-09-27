@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import TaskItem from './TaskItem';
-import TaskItemEdit from './TaskItemEdit';
-
+import { ToDoContext } from '../context/ToDoContext';
 
 export default function TaskList() {
+  const {tasks} = useContext(ToDoContext)
   return (
-    <>
-        <p>task list</p>   
-        <TaskItem />
-        <TaskItemEdit />
-    </>
-  );
+    <ul>
+      {tasks
+        .map(item=> {
+          return(             
+            <li key={item.id}><TaskItem name={item.name} checked={item.checked} id={item.id}/></li>
+          )
+        })         
+      }
+    </ul>
+  )
 }
 

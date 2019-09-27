@@ -3,7 +3,6 @@ import { Stack, PrimaryButton } from 'office-ui-fabric-react/';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { ToDoContext } from '../context/ToDoContext';
 
-
 export default function AdderTask() {
   const {tasks, setTasks} = useContext(ToDoContext)
   const [inputValue, setInputValue] = useState('')
