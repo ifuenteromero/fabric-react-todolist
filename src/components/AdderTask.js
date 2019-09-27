@@ -42,6 +42,7 @@ export default function AdderTask() {
                 iconProps={{ iconName: 'WaitlistConfirm' }}
                 className="borderRadius0"
                 onClick={handleClick} 
+                ariaLabel="addTask"
             />
         </Stack>
     </>
