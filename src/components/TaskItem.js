@@ -19,12 +19,20 @@ export default function TaskItem({ name, checked, id }) {
     console.log(newTasks)
   }
 
+  const handleDelete = (event) => {
+    const selectedId = parseInt(event.currentTarget.getAttribute('data-id'))
+    const newState = tasks.filter(item =>
+      item.id !== selectedId
+      )
+    setTasks(newState)
+  }
+
   return (
     <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
       <Checkbox label={name} onChange={handleCheck} checked={ checked } id={id}/>
       <Stack horizontal>
-        <IconButton iconProps={{ iconName: 'Edit' }} onClick = {() => console.log('Edit')} ariaLabel="Edit"/>
-        <IconButton iconProps={{ iconName: 'Delete' }} onClick={() => console.log('Delete')} ariaLabel="Delete"/>
+        <IconButton iconProps={{ iconName: 'Edit' }} onClick = {() => console.log('Edit')} ariaLabel="Edit" />
+        <IconButton iconProps={{ iconName: 'Delete' }} onClick={handleDelete} ariaLabel="Delete" data-id={id}/>
       </Stack>
     </Stack>
   );
