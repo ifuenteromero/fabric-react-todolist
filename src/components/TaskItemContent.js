@@ -38,7 +38,7 @@ const TaskItemContent = ({ name, checked, id, editable }) => {
     }
 
     return ( 
-        <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
+        <Stack horizontal horizontalAlign="space-between" verticalAlign="center" >
             <Checkbox label={name} onChange={handleCheck} checked={ checked } id={id}/>
             <Stack horizontal>
                 <IconButton iconProps={{ iconName: 'Edit' }} onClick = {handleEdit} ariaLabel="Edit" data-id={id}/>
@@ -46,6 +46,7 @@ const TaskItemContent = ({ name, checked, id, editable }) => {
             </Stack>
         </Stack>
     );
+    
 }
  
 export default TaskItemContent;

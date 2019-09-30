@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { Pivot,PivotItem } from 'office-ui-fabric-react/';
+import {ToDoContext} from '../context/ToDoContext'
 
 export default function FilterList() {
-  return (
-    <>
-        <p>filter list</p>   
-    </>
+    const {tasks,setFilter,setFilteredTasks} = useContext(ToDoContext);
+    const handleFilter = ({props}) => {
+        const {headerText : newFilter} = props;
+        setFilter(newFilter);
+    }
+    return (
+        <Pivot onLinkClick={handleFilter}  >
+            <PivotItem headerText="all" itemIcon="AllApps" ></PivotItem>
+           
+            <PivotItem headerText="active" itemIcon="Recent">
+            </PivotItem>
+            <PivotItem headerText="completed" itemIcon="Completed" >
+            </PivotItem>
+         </Pivot>
   );
 }

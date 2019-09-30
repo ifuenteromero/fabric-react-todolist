@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-import { Stack, Checkbox, IconButton } from 'office-ui-fabric-react/';
-import { ToDoContext } from '../context/ToDoContext';
+import React from 'react';
 import TaskItemEdit from './TaskItemEdit';
 import TaskItemContent from './TaskItemContent';
 

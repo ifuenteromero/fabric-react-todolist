@@ -1,12 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect,useState } from 'react';
 import TaskItem from './TaskItem';
 import { ToDoContext } from '../context/ToDoContext';
 
+
 export default function TaskList() {
-    const {tasks} = useContext(ToDoContext)
+    const {tasks,filter} = useContext(ToDoContext);
+    const [filteredTasks,setFilteredTasks] = useState(tasks)
+
+    useEffect(
+        ()=>{
+            let newTasks;
+            if(filter==='all'){
+                newTasks = [...tasks]
+            }
+            else if (filter==='active'){
+                newTasks = tasks.filter(item => item.checked===false)
+            }
+            else if (filter==='completed'){
+                newTasks = tasks.filter(item=>item.checked===true)
+            }
+            setFilteredTasks(newTasks);
+        }
+        , [tasks,filter])
+
     return (
         <ul>
-        {tasks
+        {filteredTasks
             .map(item=> {
             return(             
                 <li 
