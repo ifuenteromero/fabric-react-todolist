@@ -27,8 +27,20 @@ export default function TaskItemEdit({name,dataId}) {
     
     return (
         <Stack horizontal horizontalAlign="space-between">
-            <TextField value={name} onChange={handleChange} data-id={dataId} />
-            <DefaultButton text="Save" onClick={handleSave} data-id={dataId}/>
+            <TextField 
+                value={name} 
+                onChange={handleChange} 
+                data-id={dataId} 
+                onKeyPress={(e) => { 
+                    if(e.key==='Enter')   {
+                       handleSave(e);
+                    }}
+                }
+                />
+            <DefaultButton 
+                text="Save" 
+                onClick={handleSave} 
+                data-id={dataId}/>
         </Stack>
     );
 }

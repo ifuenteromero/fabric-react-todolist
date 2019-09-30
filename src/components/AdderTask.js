@@ -4,12 +4,11 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { ToDoContext } from '../context/ToDoContext';
 
 export default function AdderTask() {
-    const {tasks, setTasks} = useContext(ToDoContext)
-    const [inputValue, setInputValue] = useState('')
+    const {tasks, setTasks} = useContext(ToDoContext);
+    const [inputValue, setInputValue] = useState('');
 
     const handleClick = () => {
-        let lastId;
-        tasks.length ? (lastId = tasks[tasks.length - 1].id) : (lastId = 0);
+        const lastId =  tasks.length ? tasks[tasks.length - 1].id : 0;
         const newTask = {
             id: lastId + 1,
             name: inputValue,

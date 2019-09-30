@@ -4,13 +4,15 @@ import { ToDoContext } from '../context/ToDoContext';
 
 
 export default function Summary() {
-    const {tasks} = useContext(ToDoContext);
+    const {tasks, setTasks} = useContext(ToDoContext);
+    const leftTasks = tasks.filter(item => item.checked===false)
     const handleClear = () => {
-        console.log('clear')
+        const newTasks = tasks.filter(item => item.checked===false);
+        setTasks(newTasks);
     }
     return (
         <Stack horizontal horizontalAlign="start" verticalAlign="center" tokens={{childrenGap:'2%'} }>
-            <p>{tasks.length} items left</p>   
+            <p>{leftTasks.length} items left</p>   
             <DefaultButton text="Clear Completed" onClick={handleClear} />
         </Stack>
     );

@@ -16,7 +16,6 @@ const TaskItemContent = ({ name, checked, id, editable }) => {
         tasks[index] = objectSelected
         const newTasks = [...tasks];
         setTasks(newTasks)
-        console.log(newTasks)
     }
     
     const handleDelete = (event) => {
@@ -46,7 +45,7 @@ const TaskItemContent = ({ name, checked, id, editable }) => {
             </Stack>
         </Stack>
     );
-    
+
 }
  
 export default TaskItemContent;

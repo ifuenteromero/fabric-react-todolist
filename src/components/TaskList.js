@@ -4,24 +4,26 @@ import { ToDoContext } from '../context/ToDoContext';
 
 
 export default function TaskList() {
-    const {tasks,filter} = useContext(ToDoContext);
-    const [filteredTasks,setFilteredTasks] = useState(tasks)
+    const {tasks,filter,filteredTasks,setFilteredTasks} = useContext(ToDoContext);
 
-    useEffect(
-        ()=>{
-            let newTasks;
-            if(filter==='all'){
-                newTasks = [...tasks]
-            }
-            else if (filter==='active'){
-                newTasks = tasks.filter(item => item.checked===false)
-            }
-            else if (filter==='completed'){
-                newTasks = tasks.filter(item=>item.checked===true)
-            }
-            setFilteredTasks(newTasks);
+    useEffect(() => {
+        let newTasks;
+        switch(filter) {
+            case "all":
+                newTasks = tasks;
+                break;
+            case "active":
+                newTasks = tasks.filter(item => item.checked===false);
+                break;
+            case "completed":
+                newTasks = tasks.filter(item=>item.checked===true);
+                break;
+            default:
+                alert("error")
         }
-        , [tasks,filter])
+        setFilteredTasks(newTasks);
+    }
+    , [tasks,filter]);
 
     return (
         <ul>
