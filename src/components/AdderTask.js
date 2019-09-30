@@ -13,7 +13,8 @@ export default function AdderTask() {
       const newTask = {
           id: lastId + 1,
           name: inputValue,
-          checked: false
+          checked: false,
+          editable: false,
       }
       setTasks(tasks.concat(newTask))
       setInputValue('');
