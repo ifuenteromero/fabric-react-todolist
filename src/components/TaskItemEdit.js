@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 import { Stack, TextField, DefaultButton } from 'office-ui-fabric-react/';
 import { ToDoContext } from '../context/ToDoContext';
+import { TaskItemContext } from '../context/TaskItemContext';
 
 export default function TaskItemEdit({name,dataId}) {
     const {tasks, setTasks} = useContext(ToDoContext)
+    const  {setEditable} = useContext(TaskItemContext);
 
     const handleChange = ({target}) => {
         const idSelected = parseInt(target.getAttribute('data-id'));
@@ -16,13 +18,7 @@ export default function TaskItemEdit({name,dataId}) {
     }
 
     const handleSave = (event) => {
-        const idSelected = parseInt(event.currentTarget.getAttribute('data-id'));
-        const indexSelected = tasks.findIndex(item=>item.id===idSelected);
-        const selected = tasks[indexSelected];
-        const newState = [...tasks];
-        const newSelected = {...selected, editable: !selected.editable}
-        newState[indexSelected] = newSelected;
-        setTasks(newState);
+        setEditable(false)
     }
     
     return (
@@ -32,9 +28,8 @@ export default function TaskItemEdit({name,dataId}) {
                 onChange={handleChange} 
                 data-id={dataId} 
                 onKeyPress={(e) => { 
-                    if(e.key==='Enter')   {
-                       handleSave(e);
-                    }}
+                    e.key==='Enter' && handleSave(e);
+                    }
                 }
                 />
             <DefaultButton 

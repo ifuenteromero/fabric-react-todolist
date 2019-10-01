@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import { Pivot,PivotItem } from 'office-ui-fabric-react/';
 import {ToDoContext} from '../context/ToDoContext'
-import TaskList from './TaskList';
 
 export default function FilterList() {
     const {tasks,setFilter} = useContext(ToDoContext);
@@ -9,11 +8,14 @@ export default function FilterList() {
         const {headerText : newFilter} = props;
         setFilter(newFilter);
     }
+    const numberTasks = tasks.length;
+    const numberActive = tasks.filter(item => item.checked===false).length;
+    const numberCompleted = numberTasks - numberActive;
     return (
         <Pivot onLinkClick={handleFilter}  >
-            <PivotItem headerText="all" itemIcon="AllApps" itemCount={tasks.length}></PivotItem>
-            <PivotItem headerText="active" itemIcon="Recent" itemCount={tasks.filter(item => item.checked===false).length} ></PivotItem>
-            <PivotItem headerText="completed" itemIcon="Completed" itemCount={tasks.filter(item => item.checked===true).length} ></PivotItem>
+            <PivotItem headerText="all" itemIcon="AllApps" itemCount={numberTasks}></PivotItem>
+            <PivotItem headerText="active" itemIcon="Recent" itemCount={numberActive} ></PivotItem>
+            <PivotItem headerText="completed" itemIcon="Completed" itemCount={numberCompleted} ></PivotItem>
         </Pivot>
     );
 }

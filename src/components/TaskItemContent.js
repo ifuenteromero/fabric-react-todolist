@@ -1,9 +1,11 @@
 import React, {useContext} from 'react';
 import { Stack, Checkbox, IconButton } from 'office-ui-fabric-react/';
 import { ToDoContext } from '../context/ToDoContext';
+import { TaskItemContext } from '../context/TaskItemContext';
 
 const TaskItemContent = ({ name, checked, id, editable }) => {
-    const {tasks, setTasks} = useContext(ToDoContext)
+    const {tasks, setTasks} = useContext(ToDoContext);
+    const {setEditable} = useContext(TaskItemContext);
 
     const handleCheck = (event) =>{
         const idSelected = parseInt(event.target.id);
@@ -27,13 +29,7 @@ const TaskItemContent = ({ name, checked, id, editable }) => {
     }
 
     const handleEdit = (event) => {
-        const idSelected = parseInt(event.currentTarget.getAttribute('data-id'));
-        const indexSelected = tasks.findIndex(item=>item.id===idSelected);
-        const selected = tasks[indexSelected];
-        const newState = [...tasks];
-        const newSelected = {...selected, editable: !selected.editable}
-        newState[indexSelected] = newSelected;
-        setTasks(newState);
+        setEditable(true);
     }
 
     return ( 

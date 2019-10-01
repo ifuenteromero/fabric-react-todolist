@@ -1,46 +1,44 @@
-import React, { useContext, useEffect,useState } from 'react';
+import React, { useContext } from 'react';
 import TaskItem from './TaskItem';
 import { ToDoContext } from '../context/ToDoContext';
-
+import {TaskItemProvider} from '../context/TaskItemContext'
 
 export default function TaskList() {
-    const {tasks,filter,filteredTasks,setFilteredTasks} = useContext(ToDoContext);
+    const {tasks,filter} = useContext(ToDoContext);
 
-    useEffect(() => {
-        let newTasks;
-        switch(filter) {
-            case "all":
-                newTasks = tasks;
-                break;
-            case "active":
-                newTasks = tasks.filter(item => item.checked===false);
-                break;
-            case "completed":
-                newTasks = tasks.filter(item=>item.checked===true);
-                break;
-            default:
-                alert("error")
-        }
-        setFilteredTasks(newTasks);
+    let filteredTasks;
+    switch(filter) {
+        
+        case "all":
+            filteredTasks = tasks;
+            break;
+        case "active":
+            filteredTasks = tasks.filter(item => item.checked===false);
+            break;
+        case "completed":
+            filteredTasks = tasks.filter(item=>item.checked===true);
+            break;
+        default:
+            alert("error")
     }
-    , [tasks,filter]);
-
+   
     return (
         <ul>
         {filteredTasks
             .map(item=> {
-            return(             
-                <li 
-                className="todo-list__element" 
-                key={item.id}>
-                    <TaskItem 
-                        name={item.name} 
-                        checked={item.checked} 
-                        id={item.id} 
-                        editable={item.editable} 
-                    />
-                </li>
-            )
+                return(  
+                    <TaskItemProvider key={item.id} >           
+                        <li 
+                        className="todo-list__element" 
+                        >
+                            <TaskItem 
+                                name={item.name} 
+                                checked={item.checked} 
+                                id={item.id} 
+                            />
+                        </li>
+                    </TaskItemProvider>
+                )
             })         
         }
         </ul>

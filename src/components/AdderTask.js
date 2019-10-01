@@ -13,7 +13,6 @@ export default function AdderTask() {
             id: lastId + 1,
             name: inputValue,
             checked: false,
-            editable: false,
         }
         setTasks(tasks.concat(newTask))
         setInputValue('');
