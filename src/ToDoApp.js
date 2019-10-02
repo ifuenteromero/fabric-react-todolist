@@ -5,7 +5,7 @@ import FilterList from './components/FilterList';
 import TaskList from './components/TaskList';
 import Summary from './components/Summary';
 import { loadTheme } from 'office-ui-fabric-react';
-import { ThemeProvider, ThemeContext } from './context/ThemeContext';
+import { ThemeProvider } from './context/ThemeContext';
 import {ToDoContext} from './context/ToDoContext'
 import { themeGreen, themeDark } from './utils/themePalettes';
 

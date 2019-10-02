@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { SpinButton, ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 
 const styles = {
   root: {
