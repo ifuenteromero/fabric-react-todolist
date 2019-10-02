@@ -1,14 +1,10 @@
 import React, {useContext} from 'react';
-import { Panel, SwatchColorPicker } from 'office-ui-fabric-react';
+import { Panel, SwatchColorPicker, formProperties } from 'office-ui-fabric-react';
 import { ThemeContext } from '../context/ThemeContext';
+import { colorThemeCells } from '../utils/themePalettes';
 
 const ThemePanel = () => {
     const {visiblePanel, setVisiblePanel,theme, setTheme} = useContext(ThemeContext);
-
-    const colorCellsExample1 = [
-        { id: 'green', label: 'green', color: '#00783e' },
-        { id: 'dark', label: 'dark', color: '#323130' },
-      ];
 
     return (  
         <Panel
@@ -24,7 +20,7 @@ const ThemePanel = () => {
                 cellWidth={35}
                 selectedId={theme}
                 cellShape={'square'}
-                colorCells={colorCellsExample1}
+                colorCells={colorThemeCells}
                 onColorChanged={(id, color) => setTheme(id)}
         />
         </Panel>

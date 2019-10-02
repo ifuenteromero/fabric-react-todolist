@@ -51,3 +51,8 @@ export const themeDark = {
       white: '#999',
     }
   } 
+
+export   const colorThemeCells = [
+  { id: 'green', label: 'green', color: '#00783e' },
+  { id: 'dark', label: 'dark', color: '#323130' },
+];
