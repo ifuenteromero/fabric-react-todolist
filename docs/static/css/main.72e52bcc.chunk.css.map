@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css","App.css"],"names":[],"mappings":"AAAA,oBACI,eACJ,CCFA,eACI,eACJ","file":"main.72e52bcc.chunk.css","sourcesContent":[".todo-list__element{\r\n    list-style: none;\r\n}\r\n/* \r\ndiv{\r\n border:1px solid black;\r\n} */",".borderRadius0{\r\n    border-radius: 0;\r\n}"]}
