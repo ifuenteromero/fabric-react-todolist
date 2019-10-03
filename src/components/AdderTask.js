@@ -39,6 +39,7 @@ export default function AdderTask() {
                     className="borderRadius0"
                     onClick={handleClick} 
                     ariaLabel="addTask"
+                    className="btn--add"
                 />
             </Stack>
         </>

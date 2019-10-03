@@ -1,3 +1,13 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+}
+
+/* body{
+    height: 100vh
+} */
+
 .borderRadius0{
     border-radius: 0;
 }
+

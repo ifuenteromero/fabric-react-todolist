@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { Panel, SwatchColorPicker, formProperties } from 'office-ui-fabric-react';
+import { Panel } from 'office-ui-fabric-react';
 import { ThemeContext } from '../context/ThemeContext';
 import ThemeColors from './ThemeColors';
 
